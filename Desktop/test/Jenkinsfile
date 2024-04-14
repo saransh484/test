@@ -5,8 +5,12 @@ pipeline{
         stage('build') {
             steps {
                 script{
-                  sh " pwd "
-                  sh " ls "
+                  dir('Desktop'){
+                    dir('test'){
+                      sh " ls "
+                      sh " pwd "
+                    }
+                  }
                 }
             }
         }
