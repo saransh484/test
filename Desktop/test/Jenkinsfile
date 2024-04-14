@@ -19,7 +19,11 @@ pipeline{
             }
         }
         stage("deploy"){
-          sh "docker images"   
+          steps{
+            script{
+                sh "docker images"
+            }
+          }
         }
     }
 }
