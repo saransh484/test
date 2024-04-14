@@ -7,15 +7,19 @@ pipeline{
                 script{
                   dir('Desktop'){
                     dir('test'){
-                      sh " ls "
-                      sh " pwd "
+                      dir ('frontend'){
+                        sh "docker build -t registry.deploy.flipr.co.in/frontend:latest ."
+                      }
+                      dir ('backend'){
+                        sh "docker build -t registry.deploy.flipr.co.in/backend:latest ."
+                      }
                     }
                   }
                 }
             }
         }
-        // stage("deploy"){
-          
-        // }
+        stage("deploy"){
+          sh "docker images"   
+        }
     }
 }
